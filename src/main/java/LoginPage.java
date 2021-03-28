@@ -1,28 +1,18 @@
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class HomePage {
+public class LoginPage {
     WebDriver driver;
 
-    private By userIcon = By.xpath("//rz-user/button");
-    private By searchField = By.xpath("//input[@name='search']");
-    private By searchButton = By.xpath("//button[text()=' Найти ']");
     private By emailInput = By.xpath("//input[@id='auth_email']");
     private By passwordInput = By.xpath("//input[@id='auth_pass']");
     private By signInButton = By.cssSelector(".button--green.auth-modal__submit");
 
-    public HomePage(WebDriver driver) {
+    public LoginPage(WebDriver driver) {
         this.driver = driver;
     }
 
-    public SearchResultPage search(String searchQuery){
-        driver.findElement(searchField).sendKeys(searchQuery);
-        driver.findElement(searchButton).click();
-        return new SearchResultPage(driver);
-    }
-
     public HomePage login(String email, String password) {
-        driver.findElement(userIcon).click();
         driver.findElement(emailInput).sendKeys(email);
         driver.findElement(passwordInput).sendKeys(password);
         driver.findElement(signInButton).click();
